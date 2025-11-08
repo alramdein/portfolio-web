@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "company": "Jubelio",
+    "position": "Research & Development Engineer",
+    "period": "08/2024 - Present",
+    "website": "https://www.jubelio.com",
+    "description": "Built an AI-based product-matching recommendation pipeline that scaled to ~50K+ product comparisons in one process, achieving 85%+ match accuracy and reducing manual matching workload by ~80%. Engineered an API Gateway that handled ~20k+ daily requests with 90% uptime. Designed and implemented a Data Warehouse system consolidating data from 5+ business units, improving inventory accuracy and reducing manual reporting time by ~30 hours per month. Developed an internal stress-testing automation tool, cutting test setup time from 2 hours to 2 minutes and enabling more teams to validate system performance without coding. Built MCP-based servers and automation tools to generate system replies, reducing manual effort by ~70% and improving response consistency."
+  },
+  {
+    "id": 2,
+    "company": "Hacktiv8",
+    "position": "Golang Instructor",
+    "period": "06/2024 - 04/2025",
+    "website": "https://www.hacktiv8.com",
+    "description": "Teaching Go/Golang fundamentals, REST API best practices, and Microservices development through deployment."
+  },
+  {
+    "id": 3,
+    "company": "Waresix",
+    "position": "Backend Engineer",
+    "period": "03/2023 - 03/2024",
+    "website": "https://www.waresix.com",
+    "description": "Optimized database queries, reducing execution time from 878,67ms to 0,66ms, enhancing app speed. Increased the amount of code tested from 20% to 60%, leading to more reliable and error-free software. Enhanced system security to mitigate DDoS attacks. Technologies used: Go, PostgreSQL, Kafka."
+  },
+  {
+    "id": 4,
+    "company": "Kumparan",
+    "position": "Backend Engineer",
+    "period": "08/2021 - 12/2022",
+    "website": "https://www.kumparan.com",
+    "description": "Improved API performance to ~200ms by optimizing cache mechanisms. Increased maintainability and scalability by rewriting services from monolithic architecture to microservices (Node.js to Golang). Built in-house video transcoding and live streaming to save operational costs. Mentored interns and led small projects to enhance app functionality. Technologies used: Node.js, Go, GraphQL, gRPC, PostgreSQL, CockroachDB, Redis, NATS, Elasticsearch, Docker, AWS S3, Kubernetes."
+  },
+  {
+    "id": 5,
+    "company": "Telkom Indonesia",
+    "position": "Backend Engineer",
+    "period": "11/2020 - 08/2021",
+    "website": "https://www.telkom.co.id",
+    "description": "Developed Delivery Order API that processes IoT device data like geolocation, temperature, door sensor, and SOS sensor, integrating it with external systems using Message Queue technology. Technologies used: Node.js, Express.js, PHP, PostgreSQL, Kafka, Apache, Swagger, OpenShift."
+  }
+]

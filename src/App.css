@@ -1,42 +1,294 @@
-#root {
-  max-width: 1280px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-main: #282828;
+  --text-light: #F8F8F8;
+  --primary-mint: #08F8B8;
+  --secondary-green: #185E4C;
+  --accent-dark: #1F2A27;
+  --text-muted: #B8B8B8;
+  --max-width: 1200px;
+}
+
+.container {
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.accent-circle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  background-color: var(--accent-dark);
+  border-radius: 50%;
+  z-index: 1000;
+}
+
+section {
+  padding: 80px 0;
+  width: 100%;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.services-grid, .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Experience Timeline - Simple & Minimalist */
+.timeline {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 3rem;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: -2rem;
+  width: 2px;
+  background: rgba(8, 248, 184, 0.3);
+}
+
+.timeline-item:last-child .timeline-line {
+  display: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  background: var(--primary-mint);
+  border: 3px solid var(--bg-main);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-mint);
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.company {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.company a {
+  color: var(--primary-mint);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.company a:hover {
+  color: var(--text-light);
+}
+
+.period {
+  background: var(--secondary-green);
+  color: var(--text-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.position {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.toggle-btn {
+  background: transparent;
+  border: 1px solid var(--primary-mint);
+  color: var(--primary-mint);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.toggle-btn:hover {
+  background: var(--primary-mint);
+  color: var(--bg-main);
+}
+
+.description {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 1rem 0 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(8, 248, 184, 0.2);
+  list-style: none;
+  padding-left: 0;
+}
+
+.description li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.description li::before {
+  content: '•';
+  color: var(--primary-mint);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .timeline-item {
+    padding-left: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .timeline-line {
+    left: 10px;
+  }
+  
+  .timeline-dot {
+    left: 4px;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .company {
+    font-size: 1.125rem;
+  }
+  
+  .timeline-content {
+    padding: 1.25rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.experience-period {
+  background: var(--secondary-green);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.position-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+  .timeline-item {
+    padding-left: 2.5rem;
+  }
+  
+  .timeline-line {
+    left: 10px;
+  }
+  
+  .timeline-dot {
+    left: 4px;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .company {
+    font-size: 1.125rem;
+  }
+  
+  .timeline-content {
+    padding: 1.25rem;
   }
 }
 
-.card {
-  padding: 2em;
+.service-card, .project-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
 }
 
-.read-the-docs {
-  color: #888;
+.service-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tech-tag {
+  background: var(--primary-mint);
+  color: var(--bg-main);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.contact-info p {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text-muted);
 }

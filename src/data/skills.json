@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Go",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
+    "website": "https://golang.org/"
+  },
+  {
+    "name": "TypeScript",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    "website": "https://www.typescriptlang.org/"
+  },
+  {
+    "name": "PostgreSQL",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    "website": "https://www.postgresql.org/"
+  },
+  {
+    "name": "Kafka",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg",
+    "website": "https://kafka.apache.org/"
+  },
+  {
+    "name": "Redis",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+    "website": "https://redis.io/"
+  },
+  {
+    "name": "RabbitMQ",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rabbitmq/rabbitmq-original.svg",
+    "website": "https://www.rabbitmq.com/"
+  },
+  {
+    "name": "Docker",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    "website": "https://www.docker.com/"
+  }
+]

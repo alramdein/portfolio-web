@@ -1,0 +1,16 @@
+{
+  "name": "Alif Ramdani",
+  "role": "Software Engineer | Scalable & Distributed Systems Specialist",
+  "description": "4+ years crafting high-performance, reliable and scalable microservices.",
+  "about": "Seasoned software engineer with 4+ years of experience architecting and building highly scalable and reliable microservice and distributed systems. Expert in Go/Golang, TypeScript, PostgreSQL, Redis, Kafka, Docker, and Kubernetes. Hands-on experience in AI-driven solutions, including statistical forecasting models for sales prediction and inventory optimization, as well as MCP-based tools for intelligent workflow automation.",
+  "avatar": "/avatar.jpg",
+  "contact": {
+    "email": "ramdanialif26@emagmaiil.com",
+    "location": "Indonesia"
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/alif-ramdani/",
+    "github": "https://github.com/alramdein",
+    "portfolio": "https://aliframdani.dev"
+  }
+}

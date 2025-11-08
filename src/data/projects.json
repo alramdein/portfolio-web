@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "E-Commerce Platform",
+    "description": "Modern e-commerce platform with intuitive design and seamless user experience.",
+    "tech": ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    "image": "/project1.jpg",
+    "link": "https://github.com/alramdein",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Task Management App",
+    "description": "Collaborative task management application for teams with real-time updates.",
+    "tech": ["Vue.js", "Firebase", "TypeScript"],
+    "image": "/project2.jpg",
+    "link": "https://github.com/alramdein",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Portfolio Website",
+    "description": "Clean and professional portfolio website built with React and Vite.",
+    "tech": ["React", "Vite", "CSS3"],
+    "image": "/project3.jpg",
+    "link": "https://github.com/alramdein",
+    "featured": false
+  }
+]
