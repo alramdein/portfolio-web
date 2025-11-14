@@ -1,6 +1,8 @@
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import YoutubeVideos from './components/YoutubeVideos'
+import MediumArticles from './components/MediumArticles'
 import About from './components/About'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
@@ -11,6 +13,8 @@ function App() {
     <div className="app">
       <Navbar />
       <Hero />
+      <YoutubeVideos />
+      <MediumArticles />
       <About />
       <Experience />
       <Contact />

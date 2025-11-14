@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "Simple Blockchain With Go",
+    "excerpt": "Blockchain has become the backbone of several cutting-edge technologies used in the present era. Take, for example, cryptocurrencies, NFTs…",
+    "url": "https://medium.com/waresix/simple-blockchain-with-go-cdd3ac870157",
+    "date": "Jul 31, 2023",
+    "readTime": "8 min read",
+    "claps": 2
+  },
+  {
+    "id": 2,
+    "title": "Software Engineering is about Simplicity",
+    "excerpt": "Make it simple bro. Even if it looks stupid, but it is solved the problem, then it is good. Complexity is prone to creating more bugs…",
+    "url": "https://medium.com/@alramdein/software-engineering-is-about-simplicity-ce33e209de94",
+    "date": "Jun 26, 2022",
+    "readTime": "5 min read", 
+    "claps": 41
+  },
+  {
+    "id": 3,
+    "title": "Undoing a Force Push in Git: Recovering Your Git Repository Safely",
+    "excerpt": "Git is a powerful version control system that allows developers to track changes in their codebase efficiently. However, it's also known…",
+    "url": "https://medium.com/waresix/undoing-a-force-push-in-git-recovering-your-git-repository-safely-f24dcd98cf0f",
+    "date": "Nov 12, 2023",
+    "readTime": "6 min read",
+    "claps": 2
+  }
+]

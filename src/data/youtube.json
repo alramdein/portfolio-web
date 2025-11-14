@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Quick Tech Tip #1",
+    "thumbnail": "https://img.youtube.com/vi/klyJYkhCdRc/maxresdefault.jpg",
+    "url": "https://www.youtube.com/shorts/klyJYkhCdRc",
+    "duration": "0:60"
+  },
+  {
+    "id": 2,
+    "title": "Quick Tech Tip #2", 
+    "thumbnail": "https://img.youtube.com/vi/IFzcC7I4b50/maxresdefault.jpg",
+    "url": "https://www.youtube.com/shorts/IFzcC7I4b50",
+    "duration": "0:45"
+  },
+  {
+    "id": 3,
+    "title": "Quick Tech Tip #3",
+    "thumbnail": "https://img.youtube.com/vi/TItPF2bOUEs/maxresdefault.jpg",
+    "url": "https://www.youtube.com/shorts/TItPF2bOUEs", 
+    "duration": "0:55"
+  }
+]

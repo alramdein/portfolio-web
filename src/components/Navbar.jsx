@@ -18,7 +18,7 @@ function Navbar() {
         </div>
         <div className="nav-right">
           <a 
-            href="https://drive.google.com/uc?export=download&id=18vays21lo5HQd5Uo3N2eK7YxlyzVxdUv" 
+            href="https://drive.google.com/uc?export=download&id=1mbsx-APB4mEWTaSBEuYU3JJvPcGprPAD" 
             className="nav-cta"
             download="Alif_Ramdani_CV.pdf"
             target="_blank"
