@@ -12,7 +12,12 @@ function Experience() {
   }
 
   const formatDescription = (description) => {
-    return description.split('.').filter(item => item.trim()).map(item => item.trim())
+    // Split on periods that are followed by a space and capital letter (new sentences)
+    // This preserves technology names like "Node.js", "v1.2.3", etc.
+    return description
+      .split(/\. (?=[A-Z])/)
+      .filter(item => item.trim())
+      .map(item => item.trim().replace(/\.$/, '')) // Remove trailing periods
   }
 
   return (
