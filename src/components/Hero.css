@@ -113,6 +113,8 @@
 .hero-cta:hover {
   filter: brightness(0.95);
   transform: translateY(-2px);
+  color: var(--bg-main);
+  opacity: 1;
 }
 
 .hero-image {

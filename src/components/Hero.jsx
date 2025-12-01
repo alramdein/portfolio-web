@@ -34,7 +34,7 @@ function Hero() {
             </div>
           </div>
           
-          <button className="hero-cta">Let's Work Together!</button>
+          <a href="#contact" className="hero-cta">Let's Work Together!</a>
         </div>
         <div className="hero-right">
           <div className="hero-image">
