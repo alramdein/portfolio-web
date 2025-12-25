@@ -225,6 +225,14 @@ h2 {
   text-align: center;
 }
 
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
 .services-grid, .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
