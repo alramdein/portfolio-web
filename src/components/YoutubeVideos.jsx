@@ -4,7 +4,8 @@ function YoutubeVideos() {
   return (
     <section className="youtube-section" id="videos">
       <div className="container">
-        <h2>I'm a tech content creator! 🎥</h2>
+        <h2>I'm a content creator! 🎥</h2>
+        <p className="section-subtitle">Tech, History and Science</p>
         <div className="content-grid">
           {youtubeData.map(video => (
             <a
