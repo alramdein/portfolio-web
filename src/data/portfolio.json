@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Asynchronous Task Management System for AI Workloads",
+    "thumbnail": "/src/assets/portfolio-1.jpg",
+    "description": "I designed and built a Task Management service that orchestrates asynchronous AI workloads. The service receives user requests, forwards them to an AI backend, and stores pending tasks in Redis. After the AI service completes background processing and publishes the result to Redis, the Task service enqueues the data into RabbitMQ. A dedicated consumer service then processes tasks sequentially and dispatches them to the AI backend. The system includes a robust, fault-tolerant progress tracking mechanism to ensure reliable execution and recovery.",
+    "skills": ["Golang", "RabbitMQ", "Redis"]
+  },
+  {
+    "id": 2,
+    "title": "High-Performance API Gateway for Microservices",
+    "thumbnail": "/src/assets/portfolio-2.jpg",
+    "description": "I built a that system required dynamic routing to support canary releases, enabling new features to be delivered only to specific tenants through host-based control at the API Gateway level. It also required centralized authentication and rate limiting, while maintaining high performance with minimal added latency. To achieve this, I evaluated multiple API Gateway solutions, primarily KrakenD and Kong, then implemented the selected gateway with custom plugins and features tailored to the requirements. I also conducted stress and load testing to verify that the gateway layer did not introduce significant latency.",
+    "skills": ["Golang", "Research and Development", "Lua", "Redis", "Kafka", "Microservice", "API Gateway", "Docker"]
+  },
+  {
+    "id": 3,
+    "title": "AI-Powered Text-to-SQL Chat Interface",
+    "thumbnail": "/src/assets/portfolio-3.jpg",
+    "description": "Built an internal chat system that allows non-technical users (mostly sales or busdev) to query company data using natural language. The system converts user input into safe, executable SQL scoped by company_id, then returns results in real time.",
+    "skills": ["Python", "LLM Prompt Engineering", "Vanna (Text2SQL)", "VectorDB (Qdrant)", "SQL (PostgreSQL)"]
+  }
+]
