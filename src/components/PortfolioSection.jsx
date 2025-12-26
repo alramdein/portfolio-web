@@ -18,7 +18,7 @@ function PortfolioSection() {
   return (
     <section className="portfolio-section" id="portfolio">
       <div className="container">
-        <h2>Portfolio 🚀</h2>
+        <h2>What I've built 🚀</h2>
         <div className="portfolio-grid">
           {portfolioData.map(portfolio => (
             <div
