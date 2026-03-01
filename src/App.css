@@ -240,7 +240,41 @@ h2 {
   margin-top: 3rem;
 }
 
+/* About Section */
+.about {
+  padding: 60px 0 40px 0;
+  width: 100%;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
 /* Experience Section - Clean & Minimalist */
+.experience {
+  padding: 60px 0;
+  width: 100%;
+}
+
+.experience h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
 .timeline {
   margin-top: 3rem;
   max-width: 900px;
