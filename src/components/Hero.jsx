@@ -8,7 +8,7 @@ function Hero() {
       <div className="hero-container">
         <div className="hero-left">
           <div className="hero-badge">
-            👋 Seasoned Software Engineer 💻
+            👋 Hi, I'm a Software Engineer 💻
           </div>
           <h1 className="hero-title">{personalData.name}</h1>
           <p className="hero-description">{personalData.description}</p>

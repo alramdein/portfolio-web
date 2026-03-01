@@ -58,9 +58,16 @@ function PortfolioSection() {
             <div className="modal-body">
               <h2 className="modal-title">{selectedPortfolio.title}</h2>
               <div className="modal-description">
-                {selectedPortfolio.description.split('\n').map((line, index) => (
-                  <p key={index}>{line}</p>
-                ))}
+                {selectedPortfolio.description.split('\n').map((line, index) => {
+                  const headings = ['Problem:', 'My Role:', 'Design:', 'Result:'];
+                  const isHeading = headings.some(heading => line === heading);
+                  
+                  return (
+                    <p key={index}>
+                      {isHeading ? <strong>{line}</strong> : line}
+                    </p>
+                  );
+                })}
               </div>
               <div className="modal-skills">
                 <h3>Skills & Technologies</h3>

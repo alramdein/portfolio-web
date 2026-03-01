@@ -2,10 +2,10 @@
   {
     "id": 1,
     "company": "Jubelio",
-    "position": "Research & Development Engineer",
+    "position": "Backend Engineer - R&D",
     "period": "08/2024 - Present",
     "website": "https://www.jubelio.com",
-    "description": "Built a Text2SQL tool that returns information based on any user question via a chat interface. Built a reliable pipeline for an AI-based product-matching recommendation system that processes large-scale product comparisons, achieves high match accuracy, and significantly reduces manual matching workload. Engineered an API Gateway that handled ~20k+ daily requests with 97% uptime. Developed an internal stress-testing automation tool that reduced test setup time from 2 hours to 2 minutes and enabled multiple teams to validate system performance without coding and with proper system resources. Implemented a Data Warehouse system consolidating data from several business units, improving inventory accuracy, and reducing manual reporting time. Built MCP (Model Context Protocol) servers and tools to integrate all internally developed AI components."
+    "description": "Conducted a comprehensive API Gateway evaluation across 7+ criteria (latency, observability, extensibility, architectural fit, and compatibility), delivering a formal recommendation adopted by engineering leadership. Engineered a Go-based API Gateway that handled ~20k+ daily requests with an SLA of 99.86%. Engineered a distributed task queue with Go and RabbitMQ, progress tracking with Redis, and job management system powering an AI-based product-matching pipeline, processing ~11K product records per run with reliable async execution and full job lifecycle observability. Developed an AI-powered Text2SQL system using Python with a conversational chat interface, leveraging RAG-based context retrieval and fine-tuned query generation to translate natural language into accurate SQL, enabling non-technical users to query databases without writing a single line of SQL. Developed an internal stress-testing automation tool that reduced test setup time from hours to under 5 minutes and enabled multiple teams to run stress tests with proper system resources. Implemented a Data Warehouse system consolidating data from several business units using Kafka, improving inventory accuracy, and reducing manual reporting time. Built MCP (Model Context Protocol) servers exposing internal AI components as callable tools, including size chart lookup and automated support reply, enabling AI agents to interact directly with production services."
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
     "position": "Backend Engineer",
     "period": "03/2023 - 03/2024",
     "website": "https://www.waresix.com",
-    "description": "Optimized database queries, reducing execution time from 878,67ms to 0,66ms, enhancing app speed. Increased the amount of code tested from 20% to 60%, leading to more reliable and error-free software. Enhanced system security to mitigate DDoS attacks. Technologies used: Go, PostgreSQL, Kafka."
+    "description": "Optimized PostgreSQL queries, reducing execution time from 878.67ms to 0.66ms. Built reliable event-driven systems with Go and Kafka as part of the core API team. Increased test coverage from 20% to 60%, significantly reducing production bugs. Implemented rate limiting and request filtering to mitigate DDoS attacks."
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "position": "Backend Engineer",
     "period": "08/2021 - 12/2022",
     "website": "https://www.kumparan.com",
-    "description": "Improved API performance to ~200ms by optimizing cache mechanisms. Increased maintainability and scalability by rewriting services from monolithic architecture to microservices (Node.js to Golang). Built in-house video transcoding and live streaming to save operational costs. Mentored interns and led small projects to enhance app functionality. Technologies used: Node.js, Go, GraphQL, gRPC, PostgreSQL, CockroachDB, Redis, NATS, Elasticsearch, Docker, AWS S3, Kubernetes."
+    "description": "Improved API response time to ~200ms by redesigning the Redis caching layer. Increased scalability by migrating services from a Node.js monolith to a Go microservice architecture. Reduced operational costs by building an in-house video transcoding and live streaming pipeline, eliminating reliance on third-party services. Built high-throughput async microservices in Go using NATS and gRPC for content delivery pipelines. Built read-optimized content serving APIs using Elasticsearch, PostgreSQL, Redis, and GraphQL. Mentored 3 interns and led a cross-functional project delivering improvements to the Kumparan platform."
   },
   {
     "id": 5,
@@ -37,6 +37,6 @@
     "position": "Backend Engineer",
     "period": "11/2020 - 08/2021",
     "website": "https://www.telkom.co.id",
-    "description": "Developed Delivery Order API that processes IoT device data like geolocation, temperature, door sensor, and SOS sensor, integrating it with external systems using Message Queue technology. Technologies used: Node.js, Express.js, PHP, PostgreSQL, Kafka, Apache, Swagger, OpenShift."
+    "description": "Built a Delivery Order API in Express.js and PHP that processed real-time IoT device data including geolocation, temperature, door and SOS sensors, integrating with external partners via Kafka for reliable async message delivery."
   }
 ]

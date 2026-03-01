@@ -41,11 +41,9 @@ function Navbar() {
         </div>
         <div className={`nav-right ${isMenuOpen ? 'active' : ''}`}>
           <a 
-            href="https://drive.google.com/uc?export=download&id=106cwBcrTEQaZsAxA7M61p3Tj2tkD5wTY" 
+            href="/cv/Alif Ramdani - CV.pdf" 
             className="nav-cta"
             download="Alif_Ramdani_CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
             onClick={closeMenu}
           >
             📄 Download CV

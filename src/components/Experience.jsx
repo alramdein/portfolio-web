@@ -27,8 +27,6 @@ function Experience() {
         <div className="timeline">
           {experienceData.map((job) => (
             <div key={job.id} className="timeline-item">
-              <div className="timeline-line"></div>
-              <div className="timeline-dot"></div>
               <div className="timeline-content">
                 <div className="job-header">
                   <h3 className="company">
