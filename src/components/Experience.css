@@ -1,0 +1,233 @@
+.timeline {
+  position: relative;
+  max-width: 860px;
+  margin: 3.5rem auto 0;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  bottom: 2rem;
+  left: 5px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-mint),
+    rgba(8, 248, 184, 0.25) 35%,
+    var(--border)
+  );
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 1.9rem;
+  left: -2rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg-main);
+  border: 2px solid var(--border-mint);
+}
+
+.timeline-dot.is-current {
+  background: var(--primary-mint);
+  border-color: var(--primary-mint);
+  box-shadow: 0 0 0 5px rgba(8, 248, 184, 0.14);
+}
+
+.timeline-card {
+  padding: 1.6rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.timeline-card:hover {
+  border-color: var(--border-mint);
+  background: var(--surface-hover);
+}
+
+.job-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.job-company {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.job-company a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.job-company a svg {
+  font-size: 0.65em;
+  color: var(--text-faint);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.job-company a:hover {
+  color: var(--primary-mint);
+  opacity: 1;
+}
+
+.job-company a:hover svg {
+  color: var(--primary-mint);
+  transform: translate(2px, -2px);
+}
+
+.badge-current {
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background: var(--mint-dim);
+  border: 1px solid var(--border-mint);
+  color: var(--primary-mint);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.job-position {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--primary-mint);
+}
+
+.job-period {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-top: 0.3rem;
+}
+
+.job-summary {
+  font-size: 0.925rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
+}
+
+.job-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.job-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.55rem 1.1rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.job-toggle:hover {
+  color: var(--primary-mint);
+  border-color: var(--border-mint);
+  background: var(--mint-dim);
+}
+
+.chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.25s ease;
+}
+
+.chevron.is-open {
+  transform: rotate(-135deg) translate(-2px, -2px);
+}
+
+.job-highlights {
+  list-style: none;
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+  animation: slide-down 0.3s ease;
+}
+
+.job-highlights.is-static {
+  animation: none;
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-6px); }
+}
+
+.job-highlights li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.925rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.job-highlights li:last-child {
+  margin-bottom: 0;
+}
+
+.job-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  top: 0.72em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary-mint);
+}
+
+@media (max-width: 640px) {
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-dot {
+    left: -1.5rem;
+  }
+
+  .job-top {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .job-period {
+    padding-top: 0;
+  }
+}

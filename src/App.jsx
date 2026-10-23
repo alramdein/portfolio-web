@@ -1,27 +1,41 @@
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import PortfolioSection from './components/PortfolioSection'
-import YoutubeVideos from './components/YoutubeVideos'
-import MediumArticles from './components/MediumArticles'
-import About from './components/About'
-import Experience from './components/Experience'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Home from './pages/Home'
+import CaseStudy from './pages/CaseStudy'
+
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const target = document.getElementById(hash.slice(1))
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' })
+        return
+      }
+    }
+    window.scrollTo(0, 0)
+  }, [pathname, hash])
+
+  return null
+}
 
 function App() {
   return (
     <div className="app">
+      <ScrollManager />
       <Navbar />
-      <Hero />
-      <PortfolioSection />
-      <YoutubeVideos />
-      <MediumArticles />
-      <About />
-      <Experience />
-      <Contact />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/work/:slug" element={<CaseStudy />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
       <Footer />
-      <div className="accent-circle"></div>
     </div>
   )
 }
