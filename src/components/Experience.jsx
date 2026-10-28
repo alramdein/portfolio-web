@@ -1,61 +1,51 @@
-import { useState } from 'react'
 import experienceData from '../data/experience.json'
+import personalData from '../data/personal.json'
+import Reveal from './Reveal'
+import { ArrowIcon, ExternalIcon } from './Icons'
+import './Experience.css'
 
 function Experience() {
-  const [expandedItems, setExpandedItems] = useState({})
-
-  const toggleExpanded = (id) => {
-    setExpandedItems(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }))
-  }
-
-  const formatDescription = (description) => {
-    // Split on periods that are followed by a space and capital letter (new sentences)
-    // This preserves technology names like "Node.js", "v1.2.3", etc.
-    return description
-      .split(/\. (?=[A-Z])/)
-      .filter(item => item.trim())
-      .map(item => item.trim().replace(/\.$/, '')) // Remove trailing periods
-  }
-
   return (
-    <section className="experience" id="experience">
+    <section className="section experience" id="experience">
       <div className="container">
-        <h2>Experience</h2>
-        <div className="timeline">
-          {experienceData.map((job) => (
-            <div key={job.id} className="timeline-item">
-              <div className="timeline-content">
-                <div className="job-header">
-                  <h3 className="company">
-                    <a href={job.website} target="_blank" rel="noopener noreferrer">
-                      {job.company}
-                    </a>
-                  </h3>
-                  <span className="period">{job.period}</span>
-                </div>
-                <h4 className="position">{job.position}</h4>
-                
-                <button 
-                  className="toggle-btn"
-                  onClick={() => toggleExpanded(job.id)}
-                >
-                  {expandedItems[job.id] ? 'Less' : 'More'}
-                </button>
-                
-                {expandedItems[job.id] && (
-                  <ul className="description">
-                    {formatDescription(job.description).map((point, index) => (
-                      <li key={index}>{point}</li>
-                    ))}
-                  </ul>
-                )}
+        <Reveal className="section-head">
+          <span className="section-eyebrow">Experience</span>
+          <h2 className="section-title">Where I've worked</h2>
+          <p className="section-lead">
+            Five years of backend work, mostly in Go, across commerce, logistics and
+            news media. The detail lives on LinkedIn.
+          </p>
+        </Reveal>
+
+        <Reveal className="roles">
+          {experienceData.map(job => (
+            <div className="role" key={job.id}>
+              <div className="role-main">
+                <h3 className="role-company">
+                  <a href={job.website} target="_blank" rel="noopener noreferrer">
+                    {job.company}
+                    <ExternalIcon />
+                  </a>
+                  {job.current && <span className="badge-current">Current</span>}
+                </h3>
+                <p className="role-position">{job.position}</p>
+                <p className="role-summary">{job.summary}</p>
               </div>
+              <span className="role-years">{job.years}</span>
             </div>
           ))}
-        </div>
+        </Reveal>
+
+        <Reveal className="roles-foot" delay={80}>
+          <a
+            href={personalData.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost btn-sm"
+          >
+            Full history on LinkedIn <ArrowIcon />
+          </a>
+        </Reveal>
       </div>
     </section>
   )

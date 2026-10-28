@@ -1,16 +1,58 @@
 {
   "name": "Alif Ramdani",
-  "role": "Software Engineer | Scalable & Distributed Systems Specialist",
-  "description": "4+ years crafting high-performance, reliable and scalable microservices.",
+  "role": "Backend Engineer",
+  "specialty": "Distributed & Scalable Systems",
+  "description": "I design and ship distributed systems at production scale. API gateways, microservices, high-throughput pipelines, and the LLM-backed products that run on top of them.",
   "about": "Backend engineer with 4+ years designing and shipping distributed systems at production scale: API gateways, async task pipelines, data warehouses, and microservice migrations. Deep in Go and Node.js, with hands-on experience integrating AI into real infrastructure: RAG-based Text2SQL, statistical forecasting, and MCP servers that plug AI agents directly into production services. Focused on systems that are observable, reliable, and scalable.",
   "avatar": "/avatar.jpg",
+  "metrics": [
+    {
+      "value": "4+",
+      "unit": "yrs",
+      "label": "Shipping backend at scale"
+    },
+    {
+      "value": "40",
+      "unit": "ms",
+      "label": "p99 at 1,500 RPS"
+    },
+    {
+      "value": "99.86",
+      "unit": "%",
+      "label": "API gateway SLA"
+    },
+    {
+      "value": "1331",
+      "unit": "×",
+      "label": "Postgres query speedup"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Associate Degree of Software Engineering",
+      "field": "Software Engineering",
+      "school": "Politeknik Negeri Bandung",
+      "period": "08/2017 - 10/2020"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "Fluent"
+    },
+    {
+      "name": "Indonesian",
+      "level": "Native"
+    }
+  ],
   "contact": {
-    "email": "ramdanialif26@emagmaiil.com",
-    "location": "Indonesia"
+    "email": "ramdanialif26@gmail.com",
+    "location": "Jakarta, Indonesia"
   },
   "social": {
     "linkedin": "https://www.linkedin.com/in/alif-ramdani/",
     "github": "https://github.com/alramdein",
-    "portfolio": "https://aliframdani.dev"
+    "youtube": "https://www.youtube.com/@aliframdanihq",
+    "medium": "https://medium.com/@alramdein"
   }
 }

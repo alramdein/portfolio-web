@@ -1,23 +1,152 @@
 [
   {
     "id": 1,
-    "title": "Asynchronous Task Management System for AI Workloads",
+    "title": "Asynchronous Task Management for AI Workloads",
+    "tagline": "A Go + RabbitMQ pipeline that turns a bulk upload of thousands of products into trackable, fault-tolerant async work.",
     "thumbnail": "/portfolio-1.jpg",
-    "description": "Problem:\nUsers had to manually map their product data to the corresponding SKUs, a process that could involve thousands of entries. The team built an AI-powered product matching system using vector search to automate this, but since the AI processing takes time, the entire flow needed to be asynchronous.\n\nMy Role:\nI designed and built a middleman system that handles async task management, accepting bulk product data and queuing each entry individually for processing. The system also gives users real-time visibility into their matching progress, including how many items are currently processing, waiting in queue, completed, successful, or failed.\n\nDesign:\nI leveraged Go's goroutines to build a powerful concurrent and asynchronous task pipeline. Product data is enqueued one by one into RabbitMQ, which acts as the message broker, ensuring reliable message delivery between services. On the other side, a set of consumers pulls from the queue, processes each item, and forwards it to the AI service. All state and progress data is stored in Redis, enabling real-time monitoring with atomic reliability, ensuring accurate counts even under high concurrency.\n\nResult:\nThe system successfully processed ~11,000 product entries in a single bulk job in approximately 8 minutes, running with 3 task service pods and 5 consumers. Throughput scales exponentially as more consumers are added, and the system was stress-tested to maintain atomicity and fault tolerance under high-concurrency conditions.",
-    "skills": ["Golang", "RabbitMQ", "Redis"]
+    "metrics": [
+      {
+        "value": "~11K",
+        "label": "records per run"
+      },
+      {
+        "value": "8 min",
+        "label": "end-to-end"
+      },
+      {
+        "value": "5",
+        "label": "parallel consumers"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Problem",
+        "body": "Users had to manually map their product data to the corresponding SKUs, a process that could involve thousands of entries. The team built an AI-powered product matching system using vector search to automate this, but since the AI processing takes time, the entire flow needed to be asynchronous."
+      },
+      {
+        "heading": "My Role",
+        "body": "I designed and built a middleman system that handles async task management, accepting bulk product data and queuing each entry individually for processing. The system also gives users real-time visibility into their matching progress, including how many items are currently processing, waiting in queue, completed, successful, or failed."
+      },
+      {
+        "heading": "Design",
+        "body": "I leveraged Go's goroutines to build a concurrent and asynchronous task pipeline. Product data is enqueued one by one into RabbitMQ, which acts as the message broker, ensuring reliable message delivery between services. On the other side, a set of consumers pulls from the queue, processes each item, and forwards it to the AI service. All state and progress data is stored in Redis, enabling real-time monitoring with atomic reliability, ensuring accurate counts even under high concurrency.",
+        "code": "// Progress for a bulk job lives in one Redis hash. HINCRBY is atomic, so any\n// number of consumers can report results concurrently without a\n// read-modify-write race — the counts stay correct under load.\ntype ProgressTracker struct {\n    rdb *redis.Client\n    ttl time.Duration\n}\n\nfunc (p *ProgressTracker) key(jobID string) string {\n    return \"job:\" + jobID + \":progress\"\n}\n\n// Seed every counter up front so a new job reports 0/N instead of an empty\n// hash, which a client can't tell apart from a job that doesn't exist.\nfunc (p *ProgressTracker) Init(ctx context.Context, jobID string, total int) error {\n    pipe := p.rdb.TxPipeline()\n    pipe.HSet(ctx, p.key(jobID), map[string]any{\n        \"total\": total, \"queued\": total,\n        \"processing\": 0, \"succeeded\": 0, \"failed\": 0,\n    })\n    pipe.Expire(ctx, p.key(jobID), p.ttl)\n    _, err := pipe.Exec(ctx)\n    return err\n}\n\n// Settle moves one item out of \"processing\" into its terminal state. Both\n// counters move inside one MULTI so a crash can't leave them disagreeing.\nfunc (p *ProgressTracker) Settle(ctx context.Context, jobID string, ok bool) error {\n    outcome := \"failed\"\n    if ok {\n        outcome = \"succeeded\"\n    }\n    pipe := p.rdb.TxPipeline()\n    pipe.HIncrBy(ctx, p.key(jobID), \"processing\", -1)\n    pipe.HIncrBy(ctx, p.key(jobID), outcome, 1)\n    _, err := pipe.Exec(ctx)\n    return err\n}",
+        "codeLang": "go",
+        "codeCaption": "Atomic progress tracking across concurrent consumers"
+      },
+      {
+        "heading": "Result",
+        "body": "The system processed ~11,000 product entries in a single bulk job in approximately 8 minutes, running with 3 task service pods and 5 consumers. Throughput scales as more consumers are added, and the system was stress-tested to maintain atomicity and fault tolerance under high-concurrency conditions."
+      }
+    ],
+    "skills": [
+      "Golang",
+      "RabbitMQ",
+      "Redis",
+      "Concurrency",
+      "Kubernetes"
+    ],
+    "slug": "async-task-queue"
   },
   {
     "id": 2,
     "title": "High-Performance API Gateway for Microservices",
+    "tagline": "Canary routing, centralized auth and rate limiting on a forked KrakenD, plus a Kafka-backed access logger that costs nothing at runtime.",
     "thumbnail": "/portfolio-2.jpg",
-    "description": "Problem:\nThe company needed canary routing, centralized authentication, and centralized rate limiting at the API gateway level. After researching various options, the team chose KrakenD, a Go-based framework, for its high performance.\n\nMy Role:\nI joined mid-project and focused on improving the routing mechanism using caching to speed up lookups and minimize overhead. Since KrakenD has an OSS version, I also did a workaround by forking the underlying library to unlock paid features without the licensing cost. Additionally, I built a plugin to record path access logs for every HTTP request and response.\n\nDesign:\nFor optimal routing, I evaluated available caching tools and chose Memcached since the use case only required a simple key-value store with no need for additional features. Memcached also has a significantly lighter footprint compared to alternatives.\n\nFor the paid feature workaround, I modified Lura, the core framework that powers KrakenD. However, this came with a significant tradeoff in maintainability. Every KrakenD update requires a careful rebase, and falling too far behind the main branch accumulates tech debt that becomes increasingly painful to resolve.\n\nFor the path access logger, I used Kafka to collect all incoming log data. Despite recording tens of thousands of requests per day, the plugin introduces no meaningful overhead to the gateway.\n\nResult:\nAll features were shipped to production. The API gateway handles roughly 20,000 requests per day with an uptime of approximately 99.7%. The path access logger gives the team full visibility into every request flowing through the system.",
-    "skills": ["Golang", "Research and Development", "Lua", "Redis", "Kafka", "Microservice", "API Gateway", "Docker"]
+    "metrics": [
+      {
+        "value": "~20K",
+        "label": "requests per day"
+      },
+      {
+        "value": "99.86%",
+        "label": "SLA"
+      },
+      {
+        "value": "0",
+        "label": "logging overhead"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Problem",
+        "body": "The company needed canary routing, centralized authentication, and centralized rate limiting at the API gateway level. After researching various options, the team chose KrakenD, a Go-based framework, for its high performance."
+      },
+      {
+        "heading": "My Role",
+        "body": "I joined mid-project and focused on improving the routing mechanism using caching to speed up lookups and minimize overhead. Since KrakenD has an OSS version, I also did a workaround by forking the underlying library to unlock paid features without the licensing cost. Additionally, I built a plugin to record path access logs for every HTTP request and response."
+      },
+      {
+        "heading": "Design",
+        "body": "For optimal routing, I evaluated available caching tools and chose Memcached since the use case only required a simple key-value store with no need for additional features. Memcached also has a significantly lighter footprint compared to alternatives.\n\nFor the paid feature workaround, I modified Lura, the core framework that powers KrakenD. However, this came with a significant tradeoff in maintainability. Every KrakenD update requires a careful rebase, and falling too far behind the main branch accumulates tech debt that becomes increasingly painful to resolve.\n\nFor the path access logger, I used Kafka to collect all incoming log data. Despite recording tens of thousands of requests per day, the plugin introduces no meaningful overhead to the gateway.",
+        "code": "// The proxied request must never wait on logging. Events go into a buffered\n// channel; when it's full we drop and count instead of adding latency to the\n// caller. A dropped log is cheaper than a slow gateway.\ntype AccessLogger struct {\n    events  chan Event\n    dropped atomic.Uint64\n}\n\nfunc (l *AccessLogger) Record(e Event) {\n    select {\n    case l.events <- e:\n    default:\n        l.dropped.Add(1) // exported as a metric, never backpressures the hot path\n    }\n}\n\n// Batch so Kafka sees far fewer, larger writes than there are requests.\n// Flush on whichever comes first: a full batch or the ticker.\nfunc (l *AccessLogger) Run(ctx context.Context, w *kafka.Writer) {\n    batch := make([]kafka.Message, 0, batchSize)\n    tick := time.NewTicker(flushInterval)\n    defer tick.Stop()\n\n    flush := func() {\n        if len(batch) == 0 {\n            return\n        }\n        if err := w.WriteMessages(ctx, batch...); err != nil {\n            l.dropped.Add(uint64(len(batch)))\n        }\n        batch = batch[:0]\n    }\n\n    for {\n        select {\n        case e := <-l.events:\n            if batch = append(batch, e.Message()); len(batch) >= batchSize {\n                flush()\n            }\n        case <-tick.C:\n            flush()\n        case <-ctx.Done():\n            flush()\n            return\n        }\n    }\n}",
+        "codeLang": "go",
+        "codeCaption": "Non-blocking access logging on the request path"
+      },
+      {
+        "heading": "Result",
+        "body": "All features were shipped to production. The API gateway handles roughly 20,000 requests per day with an SLA of 99.86%. The path access logger gives the team full visibility into every request flowing through the system."
+      }
+    ],
+    "skills": [
+      "Golang",
+      "API Gateway",
+      "Lua",
+      "Memcached",
+      "Kafka",
+      "Microservices",
+      "Docker",
+      "R&D"
+    ],
+    "slug": "api-gateway"
   },
   {
     "id": 3,
     "title": "AI-Powered Text-to-SQL Chat Interface",
+    "tagline": "RAG over schemas and query history so non-technical users can ask their data a question in plain language and get an answer back.",
     "thumbnail": "/portfolio-3.jpg",
-    "description": "Problem:\nThe company wanted to enrich their data analytics product for customers. With the rise of AI, they saw an opportunity to let customers query their own company data simply by asking questions through a chat interface.\n\nMy Role:\nI researched available text-to-SQL tools and selected Vanna for its RAG-based approach and flexibility to build from scratch. I then built the text-to-SQL system using Vanna and Python, with a focus on context management to ensure responses were accurate and relevant.\n\nDesign:\nI used a RAG-based approach where the knowledge base consists of database schemas, database documentation, and commonly asked questions paired with their corresponding SQL queries. All of this knowledge is stored in Qdrant as a vector search engine. When a user asks a question, the system retrieves the relevant context from Qdrant and passes it along with the user's question to an LLM, which generates the raw SQL query. The query is then executed directly against the database, and the result is rephrased by the LLM into a human-readable response for the end user.\n\nResult:\nI delivered a working API with a /ask endpoint that runs a full pipeline covering context retrieval, SQL generation, and query execution. Each stage also has its own dedicated endpoint. The system performs well and handles follow-up questions effectively, with the LLM maintaining enough context to generate accurate responses across a conversation. Overall answer accuracy scales with the capability of the underlying LLM used.",
-    "skills": ["Python", "LLM Prompt Engineering", "Vanna (Text2SQL)", "VectorDB (Qdrant)", "SQL (PostgreSQL)"]
+    "metrics": [
+      {
+        "value": "RAG",
+        "label": "context retrieval"
+      },
+      {
+        "value": "Qdrant",
+        "label": "vector store"
+      },
+      {
+        "value": "Multi-turn",
+        "label": "follow-up questions"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Problem",
+        "body": "The company wanted to enrich their data analytics product for customers. With the rise of AI, they saw an opportunity to let customers query their own company data simply by asking questions through a chat interface."
+      },
+      {
+        "heading": "My Role",
+        "body": "I researched available text-to-SQL tools and selected Vanna for its RAG-based approach and flexibility to build from scratch. I then built the text-to-SQL system using Vanna and Python, with a focus on context management to ensure responses were accurate and relevant."
+      },
+      {
+        "heading": "Design",
+        "body": "I used a RAG-based approach where the knowledge base consists of database schemas, database documentation, and commonly asked questions paired with their corresponding SQL queries. All of this knowledge is stored in Qdrant as a vector search engine. When a user asks a question, the system retrieves the relevant context from Qdrant and passes it along with the user's question to an LLM, which generates the raw SQL query. The query is then executed directly against the database, and the result is rephrased by the LLM into a human-readable response for the end user.",
+        "code": "# Schema alone isn't enough context. The model needs three things: the DDL,\n# the human documentation explaining what columns actually mean, and prior\n# question -> SQL pairs that act as few-shot examples for house conventions.\ndef build_context(question: str, store: VectorStore, k: int = 5) -> Context:\n    return Context(\n        schemas=store.search(\"ddl\", question, k=k),\n        docs=store.search(\"documentation\", question, k=k),\n        examples=store.search(\"question_sql\", question, k=k),\n    )\n\n\ndef generate_sql(\n    question: str,\n    history: list[Turn],\n    llm: LLM,\n    store: VectorStore,\n) -> str:\n    ctx = build_context(question, store)\n\n    # Recent turns are replayed so follow-ups (\"now group that by month\")\n    # resolve against what was just asked, not against an empty context.\n    prompt = [\n        system(\n            \"Write a single read-only SQL query for the schema provided. \"\n            \"Return SQL only - no prose, no markdown fence.\"\n        ),\n        *(turn.as_message() for turn in history[-MAX_HISTORY:]),\n        user(render(ctx, question)),\n    ]\n\n    sql = strip_fence(llm.complete(prompt))\n    assert_read_only(sql)  # defence in depth; the DB role is read-only too\n    return sql",
+        "codeLang": "python",
+        "codeCaption": "Retrieval and prompt assembly for SQL generation"
+      },
+      {
+        "heading": "Result",
+        "body": "I delivered a working API with an /ask endpoint that runs a full pipeline covering context retrieval, SQL generation, and query execution. Each stage also has its own dedicated endpoint. The system performs well and handles follow-up questions effectively, with the LLM maintaining enough context to generate accurate responses across a conversation. Overall answer accuracy scales with the capability of the underlying LLM used."
+      }
+    ],
+    "skills": [
+      "Python",
+      "LLM Prompt Engineering",
+      "Vanna (Text2SQL)",
+      "VectorDB (Qdrant)",
+      "PostgreSQL"
+    ],
+    "slug": "text-to-sql"
   }
 ]

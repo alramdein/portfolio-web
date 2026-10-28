@@ -1,0 +1,103 @@
+.roles {
+  max-width: 820px;
+  margin-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.role {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.role-main {
+  min-width: 0;
+}
+
+.role-company {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.role-company a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.role-company a svg {
+  font-size: 0.6em;
+  color: var(--text-faint);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.role-company a:hover {
+  color: var(--primary-mint);
+  opacity: 1;
+}
+
+.role-company a:hover svg {
+  color: var(--primary-mint);
+  transform: translate(2px, -2px);
+}
+
+.badge-current {
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  background: var(--mint-dim);
+  border: 1px solid var(--border-mint);
+  color: var(--primary-mint);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.role-position {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary-mint);
+  margin-bottom: 0.4rem;
+}
+
+.role-summary {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.role-years {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-top: 0.2rem;
+}
+
+.roles-foot {
+  max-width: 820px;
+  margin-top: 1.75rem;
+}
+
+@media (max-width: 600px) {
+  .role {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .role-years {
+    order: -1;
+    padding-top: 0;
+  }
+}

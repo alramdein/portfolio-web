@@ -1,0 +1,51 @@
+{
+  "articles": [
+    {
+      "id": "a1",
+      "title": "Undoing a Force Push in Git: Recovering Your Git Repository Safely",
+      "excerpt": "Git is a powerful version control system, but it's also known for its sharp edges. Here's how to get your work back after a bad force push.",
+      "url": "https://medium.com/waresix/undoing-a-force-push-in-git-recovering-your-git-repository-safely-f24dcd98cf0f",
+      "date": "Nov 2023",
+      "readTime": "6 min read"
+    },
+    {
+      "id": "a2",
+      "title": "Simple Blockchain With Go",
+      "excerpt": "Building a minimal blockchain from scratch in Go to understand what actually sits underneath cryptocurrencies and NFTs.",
+      "url": "https://medium.com/waresix/simple-blockchain-with-go-cdd3ac870157",
+      "date": "Jul 2023",
+      "readTime": "8 min read"
+    },
+    {
+      "id": "a3",
+      "title": "Software Engineering is about Simplicity",
+      "excerpt": "Make it simple. Even if it looks stupid, if it solves the problem then it is good. Complexity is prone to creating more bugs.",
+      "url": "https://medium.com/@alramdein/software-engineering-is-about-simplicity-ce33e209de94",
+      "date": "Jun 2022",
+      "readTime": "41 claps"
+    }
+  ],
+  "videos": [
+    {
+      "id": "v1",
+      "title": "What is Goroutine?",
+      "url": "https://www.youtube.com/shorts/klyJYkhCdRc",
+      "thumbnail": "https://i.ytimg.com/vi/klyJYkhCdRc/hqdefault.jpg",
+      "duration": "1:18"
+    },
+    {
+      "id": "v2",
+      "title": "How a Rock Becomes a Computer Chip",
+      "url": "https://youtu.be/rMYjsN7LtnI",
+      "thumbnail": "https://i.ytimg.com/vi/rMYjsN7LtnI/hqdefault.jpg",
+      "duration": "2:30"
+    },
+    {
+      "id": "v3",
+      "title": "AWS Down",
+      "url": "https://www.youtube.com/shorts/TItPF2bOUEs",
+      "thumbnail": "https://i.ytimg.com/vi/TItPF2bOUEs/hqdefault.jpg",
+      "duration": "2:55"
+    }
+  ]
+}
