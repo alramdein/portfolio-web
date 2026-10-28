@@ -8,7 +8,6 @@ const SECTIONS = [
   { id: 'home', label: 'Home' },
   { id: 'work', label: 'Work' },
   { id: 'experience', label: 'Experience' },
-  { id: 'expertise', label: 'Skills' },
   { id: 'contact', label: 'Contact' },
 ]
 

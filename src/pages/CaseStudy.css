@@ -77,6 +77,7 @@
 }
 
 .case-metric-value {
+  font-variant-numeric: tabular-nums;
   display: block;
   font-size: 1.35rem;
   font-weight: 800;
@@ -197,5 +198,78 @@
 
   .case-foot .btn {
     width: 100%;
+  }
+}
+
+/* Code snippets */
+.code-block {
+  margin: 1.75rem 0;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.code-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.code-lang {
+  flex-shrink: 0;
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+  background: var(--mint-dim);
+  border: 1px solid var(--border-mint);
+  color: var(--primary-mint);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.code-caption {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.code-block code {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--text-light);
+  white-space: pre;
+  tab-size: 4;
+}
+
+.code-note {
+  padding: 0.6rem 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .code-block code {
+    font-size: 0.72rem;
+  }
+
+  .code-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
   }
 }

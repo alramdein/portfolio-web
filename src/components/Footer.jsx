@@ -20,7 +20,6 @@ function Footer() {
         <nav className="footer-links">
           <Link to="/#work">Work</Link>
           <Link to="/#experience">Experience</Link>
-          <Link to="/#expertise">Skills</Link>
           <Link to="/#writing">Writing</Link>
           <Link to="/#contact">Contact</Link>
         </nav>

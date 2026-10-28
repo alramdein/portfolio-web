@@ -68,6 +68,11 @@
   opacity: 1;
 }
 
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.08s;
+}
+
 .btn svg {
   font-size: 1.05em;
 }
@@ -127,6 +132,7 @@
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -134,4 +140,33 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* Text wrapping */
+.hero-title,
+.section-title,
+.case-title,
+.work-title,
+.article-title,
+.video-title,
+.modal-title {
+  text-wrap: balance;
+}
+
+.section-lead,
+.hero-description,
+.work-tagline,
+.case-tagline,
+.role-summary,
+.article-excerpt,
+.code-caption {
+  text-wrap: pretty;
+}
+
+/* Photographic images need a neutral edge so they don't blur into the surface.
+   Scoped away from .work-thumb, whose diagrams sit on white. */
+.video-thumb img,
+.avatar-img {
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }

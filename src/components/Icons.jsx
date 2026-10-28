@@ -50,7 +50,7 @@ export function ExternalIcon(props) {
 export function PlayIcon(props) {
   return (
     <svg {...base} fill="currentColor" {...props}>
-      <path d="M8 5.5v13l11-6.5z" />
+      <path d="M8.33 5.5v13l11-6.5z" />
     </svg>
   )
 }

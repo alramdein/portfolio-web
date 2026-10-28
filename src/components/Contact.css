@@ -34,13 +34,17 @@
   border-color: var(--border-mint);
 }
 
+.email-card:active {
+  transform: scale(0.99);
+}
+
 .email-icon {
   display: grid;
   place-items: center;
   width: 38px;
   height: 38px;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: 7px;
   background: var(--mint-dim);
   color: var(--primary-mint);
   font-size: 1.1rem;
@@ -219,4 +223,42 @@
   .form-group textarea {
     font-size: 16px; /* iOS zooms the viewport on focus below 16px */
   }
+}
+
+/* Identity row: a face belongs here, where someone is deciding to email a stranger */
+.contact-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-avatar {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-mint);
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
+}
+
+.contact-identity-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.contact-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.contact-role {
+  font-size: 0.8rem;
+  color: var(--text-faint);
 }

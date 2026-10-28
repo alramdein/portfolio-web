@@ -12,8 +12,8 @@ function Work() {
           <span className="section-eyebrow">Selected work</span>
           <h2 className="section-title">Systems I designed and shipped</h2>
           <p className="section-lead">
-            Three production systems, each written up the way I'd explain it in an interview:
-            the problem, what I owned, the design tradeoffs, and what it did once it was live.
+            Three of them, with the architecture, the numbers they hit, and a code sketch
+            of the part that was actually hard.
           </p>
         </Reveal>
 

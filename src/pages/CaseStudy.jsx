@@ -64,6 +64,19 @@ function CaseStudy() {
               {section.body.split('\n\n').map((paragraph, j) => (
                 <p key={j}>{paragraph}</p>
               ))}
+
+              {section.code && (
+                <figure className="code-block">
+                  <figcaption className="code-head">
+                    <span className="code-lang">{section.codeLang}</span>
+                    <span className="code-caption">{section.codeCaption}</span>
+                  </figcaption>
+                  <pre><code>{section.code}</code></pre>
+                  <figcaption className="code-note">
+                    Illustrative: the pattern rewritten from scratch, not production source.
+                  </figcaption>
+                </figure>
+              )}
             </Reveal>
           ))}
         </div>

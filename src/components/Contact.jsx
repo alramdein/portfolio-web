@@ -54,15 +54,29 @@ function Contact() {
       <div className="container">
         <Reveal className="section-head">
           <span className="section-eyebrow">Contact</span>
-          <h2 className="section-title">Let's work together</h2>
+          <h2 className="section-title">Get in touch</h2>
           <p className="section-lead">
-            Hiring, consulting, or just want to compare notes on distributed systems —
-            email is the fastest way to reach me.
+            Email is the fastest way to reach me.
           </p>
         </Reveal>
 
         <div className="contact-layout">
           <Reveal className="contact-aside">
+            <div className="contact-identity">
+              <img
+                className="contact-avatar"
+                src={personalData.avatar}
+                alt={personalData.name}
+                width="56"
+                height="56"
+                loading="lazy"
+              />
+              <span className="contact-identity-text">
+                <span className="contact-name">{personalData.name}</span>
+                <span className="contact-role">{personalData.role}</span>
+              </span>
+            </div>
+
             <button className="email-card" onClick={copyEmail} type="button">
               <span className="email-icon"><MailIcon /></span>
               <span className="email-body">
@@ -85,7 +99,7 @@ function Contact() {
               </span>
               <span className="fact">
                 <span className="status-dot" aria-hidden="true"></span>
-                Email is the best way to reach me
+                English or Indonesian
               </span>
             </div>
 
@@ -148,7 +162,7 @@ function Contact() {
               </button>
 
               <p className="form-note">
-                This opens a prefilled Gmail draft — nothing is sent until you hit send.
+                This opens a prefilled Gmail draft. Nothing sends until you hit send.
               </p>
             </form>
           </Reveal>

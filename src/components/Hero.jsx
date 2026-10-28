@@ -7,8 +7,6 @@ import './Hero.css'
 function Hero() {
   return (
     <section className="hero" id="home">
-      <div className="hero-glow" aria-hidden="true"></div>
-
       <div className="hero-container">
         <div className="hero-left">
           <p className="hero-eyebrow">
@@ -78,27 +76,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hero-right">
-          <div className="avatar-frame">
-            <div className="avatar-ring" aria-hidden="true"></div>
-            <img
-              className="avatar-img"
-              src={personalData.avatar}
-              alt={personalData.name}
-              onError={e => {
-                e.currentTarget.style.display = 'none'
-                e.currentTarget.nextElementSibling.style.display = 'grid'
-              }}
-            />
-            <div className="avatar-placeholder" style={{ display: 'none' }}>
-              AR
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="metrics-band">
-        <div className="container metrics-inner">
+        <div className="hero-metrics">
           {personalData.metrics.map(metric => (
             <div className="metric" key={metric.label}>
               <span className="metric-value">
